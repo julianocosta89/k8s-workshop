@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic_sample
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+        name: basic_sample
+  template:
+    metadata:
+      labels:
+        name: basic_sample
+    spec:
+      containers:
+      - name: server
+        image: basic_sample
+        imagePullPolicy: Never
+        #env:
+        #- name: NAME
+        #  value: "John Doe"
+        resources:
+          requests:
+            cpu: 50m
+            memory: 50Mi
+          limits:
+            cpu: 50m
+            memory: 50Mi
+        ports:
+        - containerPort: 8080
