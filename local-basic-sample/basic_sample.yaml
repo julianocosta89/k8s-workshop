@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: basic_sample
+  name: basic-sample
 spec:
   replicas: 3
   selector:
     matchLabels:
-        name: basic_sample
+        name: basic-sample
   template:
     metadata:
       labels:
-        name: basic_sample
+        name: basic-sample
     spec:
       containers:
       - name: server
-        image: basic_sample
+        image: basic-sample
         imagePullPolicy: Never
         #env:
         #- name: NAME
