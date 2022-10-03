@@ -13,7 +13,7 @@
 * [initial-sample](initial-sample) has the first Pod and Deployment used in the training.
   * In here the services were created manually, by running:
     * For the pod: `kubectl expose pod nginx --port 80 --type NodePort`.
-    * For the deployment: `kubectl expose pod nginx --port 80 --type NodePort`.
+    * For the deployment: `kubectl expose deployment nginx --port 80 --type NodePort`.
     * Note that the pod and the service were deleted before applying the deployment.
 * [local-basic-sample](local-basic-sample) has a local sample used to showcase how to build and use local images.
   * Navigate to the [`src`](local-basic-sample/src/) folder:
