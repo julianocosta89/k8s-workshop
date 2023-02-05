@@ -2,13 +2,13 @@
 
 ### Training plan
 [1. Start minikube.](#start-minikube)<br>
-[2. Configure kubectl.](#configure-kubectl)
-[3. Create your first namespace!](#create-namespace)
-[4. Deploy your first application in the namespace.](#deploy-application)
-[5. Expose the application using service.](#expose-app)
-[6. Delete the pod and service.](#delete-pod-service)
-[7. Create a deployment.](#create-deployment)
-[8. Expose the deployment using service.](#expose-deployment-app)
+[2. Configure kubectl.](#configure-kubectl)<br>
+[3. Create your first namespace!](#create-namespace)<br>
+[4. Deploy your first application in the namespace.](#deploy-application)<br>
+[5. Expose the application using service.](#expose-app)<br>
+[6. Delete the pod and service.](#delete-pod-service)<br>
+[7. Create a deployment.](#create-deployment)<br>
+[8. Expose the deployment using service.](#expose-deployment-app)<br>
 
 ## 1. Start minikube.
 
