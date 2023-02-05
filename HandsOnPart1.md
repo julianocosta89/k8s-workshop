@@ -16,7 +16,7 @@
 In the workshop we will use a *minikube* - a lightweight Kubernetes implementation that allows you to run a simple single-node K8s cluster on your machine. It is already installed on you Linux VM, you just need to start it:
 
 ```bash
-minikube start
+minikube start --kubernetes-version=v1.23.8 --vm-driver=none
 ``` 
 The output should look like this:
 ```bash
