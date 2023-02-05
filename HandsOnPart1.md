@@ -77,7 +77,6 @@ kubectl apply -f initial-sample/nginx-pod.yaml
 ```
 Note that output says:
 ```bash
-l
 pod/nginx created
 ```
 It informs us that the ***pod*** resource has been created. On K8s we don't run containers, we run ***PODs***. A ***POD*** can be 1 or more containers.
@@ -302,7 +301,20 @@ service "nginx" deleted
 No resources found in workshop namespace.
 ```
 <a name=""></a>
-## 9. Explore the workloads with kubectl.
+## 9. Build Docker image locally and run it on K8s.
+
+```bash
+cd local-basic-sample/src
+docker build -t basic-sample .
+cd ..
+kubectl apply -f basic_sample.yaml 
+kubectl expose deployment basic-sample --port 8080 --type NodePort --dry-run=client -o yaml
+kubectl apply -f basic_sample_svc.yaml 
+kubectl get svc
+kubectl get pods -o wide
+```
+<a name=""></a>
+## 10. Explore the workloads with kubectl.
 ```bash
 kubectl describe pod basic-sample-<HASH>
 kubectl logs basic-sample-<HASH>
