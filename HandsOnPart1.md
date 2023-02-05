@@ -10,6 +10,7 @@
 [7. Create a deployment.](#create-deployment)<br>
 [8. Expose the deployment using service.](#expose-deployment-app)<br>
 
+<a name="start-minikube"></a>
 ## 1. Start minikube.
 
 In the workshop we will use a *minikube* - a lightweight Kubernetes implementation that allows you to run a simple single-node K8s cluster on your machine. It is already installed on you Linux VM, you just need to start it:
@@ -39,7 +40,7 @@ The output should look like this:
 🌟  Enabled addons: storage-provisioner, default-storageclass
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ``` 
-
+<a name="configure-kubectl"></a>
 ## 2. Configure kubectl.
 ```bash
 source <(kubectl completion bash) # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
@@ -48,7 +49,7 @@ echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permane
 alias k=kubectl
 complete -o default -F __start_kubectl k
 ```
-
+<a name="create-namespace"></a>
 ## 3. Create your first namespace!
 3.1. Create the ***workshop*** namespace running the command:
 ```bash
@@ -62,7 +63,7 @@ Expected output:
 ```bash
 namespace/workshop created
 ```
-
+<a name="deploy-application"></a>
 ## 4. Deploy your first application in the namespace.
 You will run your first application in a container on K8s now. It will be an NGINX server.
 
@@ -91,7 +92,8 @@ No resources found in default namespace.
 ```
 What is wrong? :) 
 What do we have to change?
- 
+
+<a name="expose-app"></a> 
 ## 5. Expose the application using service.
 
 The NGINX application runs on K8s now. But it is not available to the outside world yet. 
@@ -151,7 +153,7 @@ Expected output:
 NAME    READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
 nginx   1/1     Running   0          28m   172.17.0.3   minikube   <none>           <none>
 ```
-
+<a name="delete-pod-service"></a>
 ## 6. Delete the pod and service.
 **6.1.** Clean up all created resources.
 ```bash
@@ -165,7 +167,7 @@ pod "nginx" deleted
 service "nginx" deleted
 No resources found in workshop namespace.
 ```
-
+<a name="create-deployment"></a>
 ## 7. Create a deployment.
 **7.1.** Deploy the application as a Deployment resource, not a single pod, use command: 
 ```bash
@@ -220,7 +222,7 @@ nginx-7fb96c846b-zjhdp   1/1     Running   0          10s   172.17.0.12   miniku
 kubectl get deploy
 kubectl get pods -o wide
 ```
-
+<a name="expose-deployment-app"></a>
 ## 8. Expose the deployment using service.
 **8.1.** Expose the deployment using NodePort service.
 ```bash
@@ -299,6 +301,7 @@ deployment.apps "nginx" deleted
 service "nginx" deleted
 No resources found in workshop namespace.
 ```
+<a name=""></a>
 ## 9. Explore the workloads with kubectl.
 ```bash
 kubectl describe pod basic-sample-<HASH>
