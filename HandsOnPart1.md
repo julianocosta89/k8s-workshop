@@ -1,7 +1,7 @@
 # Hands-on Part I
 
 ### Training plan
-[1. Start minikube.](#start-minikube)
+[1. Start minikube.](#start-minikube)<br>
 [2. Configure kubectl.](#configure-kubectl)
 [3. Create your first namespace!](#create-namespace)
 [4. Deploy your first application in the namespace.](#deploy-application)
@@ -41,6 +41,13 @@ The output should look like this:
 ``` 
 
 ## 2. Configure kubectl.
+```bash
+source <(kubectl completion bash) # set up autocomplete in bash into the current shell, bash-completion package should be installed first.
+echo "source <(kubectl completion bash)" >> ~/.bashrc # add autocomplete permanently to your bash shell.
+
+alias k=kubectl
+complete -o default -F __start_kubectl k
+```
 
 ## 3. Create your first namespace!
 3.1. Create the ***workshop*** namespace running the command:
