@@ -13,6 +13,10 @@
 <a name="start-minikube"></a>
 ## 1. Start minikube.
 
+```bash
+ssh ubuntu@<YOUR_MACHINE_IP>
+```
+
 In the workshop we will use a *minikube* - a lightweight Kubernetes implementation that allows you to run a simple single-node K8s cluster on your machine. It is already installed on you Linux VM, you just need to start it:
 
 ```bash
@@ -40,6 +44,37 @@ The output should look like this:
 🌟  Enabled addons: storage-provisioner, default-storageclass
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 ``` 
+
+Explore the minikube cluster using *kubectl* tool.
+
+```bash
+kubectl get nodes
+```
+
+To see the controlplane components run:
+```bash
+kubectl get pods --namespace kube-system
+```
+
+Expected output:
+```bash
+NAME                                      READY   STATUS    RESTARTS   AGE
+coredns-64897985d-7298s                   1/1     Running   0          3h2m
+etcd-ip-10-0-129-147                      1/1     Running   0          3h2m
+kube-apiserver-ip-10-0-129-147            1/1     Running   0          3h2m
+kube-controller-manager-ip-10-0-129-147   1/1     Running   0          3h2m
+kube-proxy-jrklv                          1/1     Running   0          3h2m
+kube-scheduler-ip-10-0-129-147            1/1     Running   0          3h2m
+storage-provisioner                       1/1     Running   0          3h2m
+```
+
+Check Node Components - Container Runtime (Docker) and kubelet.
+
+```bash
+sudo systemctl status docker
+sudo systemctl status kubelet
+```
+
 <a name="configure-kubectl"></a>
 ## 2. Configure kubectl.
 ```bash
