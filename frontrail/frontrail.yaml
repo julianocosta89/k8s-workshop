@@ -46,7 +46,7 @@ spec:
         persistentVolumeClaim:
           claimName: data-claim
       containers:
-      - image: mthenw/frontail
+      - image: mthenw/frontail:4.9.2
         name: frontail
         ports:
         - containerPort: 9001

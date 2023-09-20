@@ -1,10 +1,10 @@
-FROM node:16.17.1-alpine as builder
+FROM node:18.18.0-alpine as builder
 WORKDIR /usr/src/app
-COPY package*.json ./
+COPY package.json ./
 RUN npm install
 
 
-FROM node:16.17.1-alpine
+FROM node:18.18.0-alpine
 WORKDIR /usr/src/app
 COPY --from=builder /usr/src/app ./
 COPY . .
