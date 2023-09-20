@@ -14,8 +14,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: basic-sample
-        imagePullPolicy: Never
+        image: dynatracek8s/basic-sample:<your-name>
         #env:
         #- name: NAME
         #  value: "John Doe"

@@ -3,7 +3,7 @@
 ## Pre-requisites
 
 * Kubernetes cluster:
-  * During the workshop we have used [Minikube](https://minikube.sigs.k8s.io/docs/start/)
+  * During the workshop we have used [EKS](https://aws.amazon.com/eks/)
   * But any other Kubernetes distribution should work
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 
@@ -12,13 +12,16 @@
 * [Frontrail](https://github.com/mthenw/frontail) is used to print out everything the instructor writes in the console to a web app.
 * [initial-sample](initial-sample) has the first Pod and Deployment used in the training.
   * In here the services were created manually, by running:
-    * For the pod: `kubectl expose pod nginx --port 80 --type NodePort`.
-    * For the deployment: `kubectl expose deployment nginx --port 80 --type NodePort`.
+    * For the pod: `kubectl expose pod nginx --port 80 --type LoadBalancer`.
+    * For the deployment: `kubectl expose deployment nginx --port 80 --type LoadBalancer`.
     * Note that the pod and the service were deleted before applying the deployment.
 * [local-basic-sample](local-basic-sample) has a local sample used to showcase how to build and use local images.
   * Navigate to the [`src`](local-basic-sample/src/) folder:
+    * Use the provided credentials to login into `dynatracek8s`` docker hub account:
+      * `docker login`
     * Run the following command to build the image locally:
-      * `docker build -t basic-sample .`
+      * `docker build -t dynatracek8s/basic-sample:<your-name> .`
+      * `docker push dynatracek8s/basic-sample:<your-name>`
     * Navigate back to the `local-basic-sample` and now we can apply our `yaml` files:
       * `kubectl apply -f .`
 * [Guestbook app](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/) is a copy from the kubernetes documentation:
@@ -38,7 +41,7 @@ kubectl get pods -A
 
 kubectl config set-context --current --namespace=workshop
 
-kubectl expose pod nginx --port 80 --type NodePort
+kubectl expose pod nginx --port 80 --type LoadBalancer
 kubectl get svc
 kubectl describe svc nginx 
 kubectl get pods -o wide
@@ -54,7 +57,7 @@ kubectl scale deployment nginx --replicas 10
 kubectl get pods
 kubectl get deploy
 kubectl get pods -o wide
-kubectl expose deployment nginx --port 80 --type NodePort
+kubectl expose deployment nginx --port 80 --type LoadBalancer
 kubectl describe svc nginx 
 kubectl get svc
 kubectl scale deployment nginx --replicas 1
@@ -66,10 +69,11 @@ kubectl delete svc nginx
 kubectl get all
 
 cd local-basic-sample/src
-docker build -t basic-sample .
+docker build -t dynatracek8s/basic-sample:<your-name> .
+docker push dynatracek8s/basic-sample:<your-name>
 cd ..
 kubectl apply -f basic_sample.yaml 
-kubectl expose deployment basic-sample --port 8080 --type NodePort --dry-run=client -o yaml
+kubectl expose deployment basic-sample --port 8080 --type LoadBalancer --dry-run=client -o yaml
 kubectl apply -f basic_sample_svc.yaml 
 kubectl get svc
 kubectl get pods -o wide
