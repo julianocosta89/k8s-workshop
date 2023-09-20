@@ -7,9 +7,17 @@
   * But any other Kubernetes distribution should work
 * [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 
-## Samples used for k8s workshop  
+## Notes for the instructor
 
 * [Frontrail](https://github.com/mthenw/frontail) is used to print out everything the instructor writes in the console to a web app.
+  * In order to configure and export your local terminal history, run the following commands:
+    * `export PROMPT_COMMAND='history -a'`
+    * `docker run -d --rm -p 9001:9001 -P --name frontrail -v ~/.bash_history:/log/.bash_history mthenw/frontail /log/.bash_history`
+  * If you need to clear your history run:
+    * `history -c && history -w`
+
+## Samples used for k8s workshop  
+
 * [initial-sample](initial-sample) has the first Pod and Deployment used in the training.
   * In here the services were created manually, by running:
     * For the pod: `kubectl expose pod nginx --port 80 --type LoadBalancer`.
@@ -17,7 +25,7 @@
     * Note that the pod and the service were deleted before applying the deployment.
 * [local-basic-sample](local-basic-sample) has a local sample used to showcase how to build and use local images.
   * Navigate to the [`src`](local-basic-sample/src/) folder:
-    * Use the provided credentials to login into `dynatracek8s`` docker hub account:
+    * Use the provided credentials to login into `dynatracek8s` docker hub account:
       * `docker login`
     * Run the following command to build the image locally:
       * `docker build -t dynatracek8s/basic-sample:<your-name> .`
